@@ -10,8 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/firebase": "^7.6.1",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "date-and-time": "^2.0.0",
+    "firebase": "^8.0.0",
+    "firebaseui": "^5.0.0",
+    "nuxt": "^2.15.7",
+    "tailwind-caret-color": "^1.1.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.7",

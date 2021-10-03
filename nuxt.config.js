@@ -37,9 +37,27 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/firebase'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  
+  // Firebase
+  firebase: {
+    config: {
+      apiKey: "AIzaSyCShfzbc8Dy_q5JU3RvvnmZtZcgPXF_sok",
+      authDomain: "v-chat-19ea2.firebaseapp.com",
+      projectId: "v-chat-19ea2",
+      storageBucket: "v-chat-19ea2.appspot.com",
+      messagingSenderId: "954826273881",
+      appId: "1:954826273881:web:4abf4e7fed2cb911746d48",
+      measurementId: "G-KZVZK5BZZE"
+    },
+    services: {
+      auth: true,
+      firestore: true,
+    }
   }
 }
