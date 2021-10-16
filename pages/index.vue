@@ -1,10 +1,6 @@
 <template>
-  <div class="bg-primary-dark h-screen w-screen p-10">
-    <Login />
-    <div class="flex flex-col h-full">
+  <div class="bg-primary-dark h-screen w-screen p-6">
       <ChatMessages class="flex-grow" />
-      <ChatMessageControls />
-    </div>
   </div>
 </template>
 
