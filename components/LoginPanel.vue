@@ -9,7 +9,7 @@
             <div>
                 <a @click="logout">Logout</a>
             </div>
-            <a @click="loadMore" class="absolute bottom-0 left-1/2 transform -translate-x-2/4 -bottom-3.5">Load More Messages</a>
+            <a @click="loadMore" class="cursor-pointer absolute bottom-0 left-1/2 transform -translate-x-2/4 -bottom-3.5">Load More Messages</a>
         </div>
     </div>
 </template>
@@ -18,7 +18,7 @@ import firebase from 'firebase';
 export default {
     data() {
         return {
-            user: null
+            user: null,
         }
     },
     methods: {
@@ -29,15 +29,8 @@ export default {
         logout() {
             this.$fire.auth.signOut();
         },
-        async loadMore() {
-            const db = this.$fire.firestore;
-            var last = this.messages.length - 1;
-            await db.collection('chat').orderBy('date', 'desc').startAfter(this.lastVisible).limit(10).onSnapshot((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    this.messages.unshift(doc.data());
-                });
-                this.lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
-            })
+        loadMore() {
+            this.$emit('load-more');
         }
     },
     mounted() {
