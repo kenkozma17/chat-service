@@ -3,7 +3,7 @@
         <a v-if="!user" @click="login">Login</a>
         <div class="md:flex md:justify-between items-center relative" v-else>
             <div class="md:flex gap-4 items-center">
-                <img class="w-16 rounded-full border-2 border-primary-green" :src="user.picture" :alt="user.displayName + ' Profile Image'" />
+                <img class="w-16 rounded-full border-2 border-primary-green" :src="user.picture || user.photoURL" :alt="user.displayName + ' Profile Image'" />
                 <p>{{ user.displayName }}</p>   
             </div>
             <div>
@@ -25,9 +25,15 @@ export default {
         async login() {
             var provider = new this.$fireModule.auth.GoogleAuthProvider();
             await this.$fire.auth.signInWithPopup(provider)
+                .then((result, claims) => {
+                    this.user = result.user;
+                });
         },
         logout() {
-            this.$fire.auth.signOut();
+            this.$fire.auth.signOut()
+                .then(() => {
+                    this.user = null;
+                });
         },
         loadMore() {
             this.$emit('load-more');

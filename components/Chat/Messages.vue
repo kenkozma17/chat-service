@@ -30,6 +30,7 @@ export default Vue.extend({
                     });
                     this.lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
                     resolve(true);
+                    document.querySelector('#bottom').scrollIntoView({behavior: 'smooth'})
                 })
             }).then(() => document.querySelector('#bottom').scrollIntoView({behavior: 'smooth'}))
 
