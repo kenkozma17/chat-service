@@ -27,12 +27,14 @@ export default {
             await this.$fire.auth.signInWithPopup(provider)
                 .then((result, claims) => {
                     this.user = result.user;
+                    document.querySelector('#bottom').scrollIntoView({behavior: 'smooth'})
                 });
         },
         logout() {
             this.$fire.auth.signOut()
                 .then(() => {
                     this.user = null;
+                    document.querySelector('#bottom').scrollIntoView({behavior: 'smooth'})
                 });
         },
         loadMore() {
