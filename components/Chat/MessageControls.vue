@@ -25,7 +25,10 @@ export default Vue.extend({
     },
     computed: {
         isMessageValid() {
-            return this.message && this.message.length;
+            if(this.message) {
+                const message = this.message.replace(/\s+/g, '');
+                return message.length;
+            }
         },
         inputPlaceholder() {
             if(this.$store.state.user) {
